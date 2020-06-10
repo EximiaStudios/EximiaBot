@@ -1,0 +1,3 @@
+[submodule "app/src/widgets/nice"]
+	path = app/src/widgets/nice
+	url = git@github.com:EximiaStudios/discord-nice.git
