@@ -8,7 +8,5 @@ RUN npm install --only=production
 
 COPY ./app /app
 
-RUN npm install --only=production
-
 ENTRYPOINT ["node"]
 CMD ["./src/index.js"]
