@@ -1,3 +1,6 @@
 [submodule "app/src/widgets/nice"]
 	path = app/src/widgets/nice
 	url = git@github.com:EximiaStudios/discord-nice.git
+[submodule "app/src/widgets/status"]
+	path = app/src/widgets/status
+	url = git@github.com:EximiaStudios/discord-custom-status.git
