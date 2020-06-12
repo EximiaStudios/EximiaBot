@@ -6,7 +6,7 @@ COPY ./app/package*.json ./
 
 RUN npm install --only=production
 
-COPY ./app/* .
+COPY ./app /app
 
 ENTRYPOINT ["node"]
 CMD ["./src/index.js"]
