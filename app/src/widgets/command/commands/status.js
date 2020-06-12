@@ -3,6 +3,16 @@ const CommandBuilder = require("../classes/CommandBuilder");
 var admin = require('firebase-admin');
 var serviceAccount = process.env.FIREBASE_CREDENTIALS || require("../../../core/serviceAccountKey.json");
 
+const setupDatabase = (admin) => {
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        databaseURL: process.env.FIREBASE_URL || "https://eximiabot-dev.firebaseio.com",
+        databaseAuthVariableOverride: {
+            uid: "status-command",
+        },
+    });
+};
+
 module.exports = new CommandBuilder()
   .setName("status")
   .setOwnersOnly(true)
@@ -40,13 +50,14 @@ module.exports = new CommandBuilder()
         let statusMessage = args.join(" ");
 
         // Firebase database
-        admin.initializeApp({
-            credential: admin.credential.cert(serviceAccount),
-            databaseURL: process.env.FIREBASE_URL || "https://eximiabot-dev.firebaseio.com",
-            databaseAuthVariableOverride: {
-                uid: "status-command",
-            },
-        });
+
+        if (admin.apps.length != 0) {
+            admin.app().delete().then( () => {
+                setupDatabase(admin);
+            });
+        } else {
+            setupDatabase(admin);
+        }
 
         var db = admin.database();
         var ref = db.ref("status");
