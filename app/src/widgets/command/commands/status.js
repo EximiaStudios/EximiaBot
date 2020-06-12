@@ -1,7 +1,7 @@
 const CommandBuilder = require("../classes/CommandBuilder");
 
 var admin = require('firebase-admin');
-var serviceAccount = process.env.FIREBASE_CREDENTIALS || require("../serviceAccountKey.json");
+var serviceAccount = process.env.FIREBASE_CREDENTIALS || require("../../../core/serviceAccountKey.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -51,7 +51,10 @@ module.exports = new CommandBuilder()
         var db = admin.database();
         var ref = db.ref("status");
 
-        ref.set(statusMessage, (error) => {
+        ref.set({
+            text: statusMessage,
+            activity: activity
+        }, (error) => {
             if (error) {
                 console.log("Status database update failed. " + error);
             } else {
