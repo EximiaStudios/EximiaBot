@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Bot profile" src="https://raw.githubusercontent.com/EximiaStudios/eximiabot/master/asssets/bot-profile.png">
+  <img alt="Bot profile" src="https://raw.githubusercontent.com/EximiaStudios/eximiabot/master/assets/bot-profile.png">
   <br>
   <a href="https://github.com/EximiaStudios/eximiabot/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/eximiastudios/eximiabot/Build & Push?style=flat-square"></a>
   <a href="https://github.com/EximiaStudios/eximiabot/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/eximiastudios/eximiabot?label=GitHub&style=flat-square"></a>
