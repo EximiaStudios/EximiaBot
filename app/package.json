@@ -1,7 +1,24 @@
 {
-  "name": "create-discord-bot",
-  "version": "1.0.0",
-  "description": "",
+  "name": "eximiabot",
+  "version": "0.3.0",
+  "description": "Discord bot based on @peterthehan discord bot template.",
+  "homepage": "https://github.com/EximiaStudios/eximiabot",
+  "bugs": {
+    "url": "https://github.com/EximiaStudios/eximiabot/issues",
+    "email": "eximiaeleven@gmail.com"
+  },
+  "author": {
+    "name": "Peter Han",
+    "email": "peter.han.9493@gmail.com",
+    "url": "https://github.com/peterthehan"
+  },
+  "contributors": [
+    {
+      "name": "Muazam Kamal",
+      "email": "muazamkamal.dev@gmail.com",
+      "url": "https://github.com/muazamkamal"
+    }
+  ],
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js"
