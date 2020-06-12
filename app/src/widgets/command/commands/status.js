@@ -5,7 +5,10 @@ var serviceAccount = process.env.FIREBASE_CREDENTIALS || require("../serviceAcco
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: process.env.FIREBASE_URL || "https://eximiabot-dev.firebaseio.com"
+    databaseURL: process.env.FIREBASE_URL || "https://eximiabot-dev.firebaseio.com",
+    databaseAuthVariableOverride: {
+        uid: "status-command",
+    },
 });
 
 module.exports = new CommandBuilder()
