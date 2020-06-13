@@ -65,19 +65,21 @@ module.exports = new CommandBuilder()
     var db = admin.database();
     var ref = db.ref("status");
 
-    ref.set(
-      {
-        text: statusMessage,
-        activity: activity,
-      },
-      (error) => {
-        if (error) {
-          console.log("Status database update failed. " + error);
-        } else {
-          console.log("Status database updated.");
+    ref
+      .set(
+        {
+          text: statusMessage,
+          activity: activity,
+        },
+        (error) => {
+          if (error) {
+            console.log("Status database update failed. " + error);
+          } else {
+            console.log("Status database updated.");
+          }
         }
-      }
-    ).then( () => {
-        admin.app().delete()
-    });
+      )
+      .then(() => {
+        admin.app().delete();
+      });
   });
