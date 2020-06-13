@@ -43,30 +43,6 @@ module.exports = new CommandBuilder()
     args.shift();
     let statusMessage = args.join(" ");
 
-    // Firebase database
-
-    setupDatabase(admin, "status-command");
-
-    var db = admin.database();
-    var ref = db.ref("status");
-
-    await ref.set(
-      {
-        text: statusMessage,
-        activity: activity,
-      },
-      (error) => {
-        if (error) {
-          console.log("Status database update failed. " + error);
-        } else {
-          console.log("Status database updated.");
-        }
-      }
-    );
-
-    // Delete db app after each use
-    admin.app().delete();
-
     // Update status
     message.client.user
       .setActivity(statusMessage, { type: activity })
@@ -81,4 +57,27 @@ module.exports = new CommandBuilder()
     message.channel.send(
       `[**${message.author.username}**] Status: Updated to "${activity}", "${statusMessage}".`
     );
+
+    // Firebase database
+
+    setupDatabase(admin, "status-command");
+
+    var db = admin.database();
+    var ref = db.ref("status");
+
+    ref.set(
+      {
+        text: statusMessage,
+        activity: activity,
+      },
+      (error) => {
+        if (error) {
+          console.log("Status database update failed. " + error);
+        } else {
+          console.log("Status database updated.");
+        }
+      }
+    ).then( () => {
+        admin.app().delete()
+    });
   });
