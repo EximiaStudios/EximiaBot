@@ -82,4 +82,5 @@ module.exports = new CommandBuilder()
       .then(() => {
         admin.app().delete();
       });
-  });
+  })
+  .build();
