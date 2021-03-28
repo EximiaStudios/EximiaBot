@@ -4,3 +4,6 @@
 [submodule "app/src/widgets/status"]
 	path = app/src/widgets/status
 	url = git@github.com:EximiaStudios/discord-custom-status.git
+[submodule "app/src/widgets/firebase"]
+	path = app/src/widgets/firebase
+	url = git@github.com:EximiaStudios/discord-firebase.git
