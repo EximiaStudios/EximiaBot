@@ -1,7 +1,5 @@
 const CommandBuilder = require("../classes/CommandBuilder");
-
 var admin = require("firebase-admin");
-const setupDatabase = require("../../../core/firebaseDB");
 
 module.exports = new CommandBuilder()
   .setName("status")
@@ -59,9 +57,6 @@ module.exports = new CommandBuilder()
     );
 
     // Firebase database
-
-    setupDatabase(admin, "status-command");
-
     var db = admin.database();
     var ref = db.ref("status");
 
@@ -78,9 +73,6 @@ module.exports = new CommandBuilder()
             console.log("Status database updated.");
           }
         }
-      )
-      .then(() => {
-        admin.app().delete();
-      });
+      );
   })
   .build();
